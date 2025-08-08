@@ -1,16 +1,52 @@
-# app_morty
+# 🧪 Rick and Morty App (Flutter)
 
-A new Flutter project.
+Aplicativo mobile desenvolvido em Flutter para listar personagens da série **Rick and Morty**, utilizando a [Rick and Morty API](https://rickandmortyapi.com/).
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Funcionalidades
 
-A few resources to get you started if this is your first Flutter project:
+- ✅ Listagem paginada de personagens
+- 🔍 Filtro por nome, espécie e gênero
+- 📄 Detalhes do personagem: nome, status, espécie, gênero e localização
+- 🧪 Testes automatizados de modelo, cubit e páginas
+- 🧼 Arquitetura limpa usando **MVVM** com **Cubit**
+- 🌐 Requisições HTTP com **Dio**
+- 🎨 UI responsiva e customizada com tema
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🧱 Arquitetura
+
+O projeto segue a arquitetura MVVM:
+lib/
+├── core/ # Constantes e utilitários (ex: cores, fontes, rotas)
+├── data/
+│ ├── datasource/ # Fonte de dados (API)
+│ ├── models/ # Modelos (CharacterModel, Location, etc.)
+├── domain/
+│ └── repository/ # Abstrações de repositórios
+├── presentation/
+│ ├── view_models/ # Cubits e States
+│ └── views/ # Páginas da UI
+├── main.dart # Ponto de entrada
+
+## 🖥️ Telas
+
+- **SplashScreen**: Tela inicial com logo
+- **CharacterListPage**: Lista de personagens com filtros
+- **CharacterDetailPage**: Detalhamento do personagem selecionado
+
+---
+
+## 🧪 Testes
+
+- Modelos (`CharacterModel`, `Location`)
+- Cubits (`CharacterCubit`)
+- Páginas (`CharacterListPage`, `CharacterDetailPage`)
+
+Rodar testes:
+
+```bash
+flutter test
+
