@@ -5,6 +5,7 @@ import 'package:app_morty/presentation/views/character_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// translate-me-ignore-all-file
 class CharacterListPage extends StatelessWidget {
   const CharacterListPage({super.key});
 

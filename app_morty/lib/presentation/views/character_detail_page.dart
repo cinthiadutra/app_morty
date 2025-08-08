@@ -2,6 +2,7 @@ import 'package:app_morty/core/utils/app_colors.dart';
 import 'package:app_morty/data/models/character_model.dart';
 import 'package:flutter/material.dart';
 
+// translate-me-ignore-all-file
 class CharacterDetailPage extends StatelessWidget {
   final CharacterModel character;
 
@@ -27,7 +28,7 @@ class CharacterDetailPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Image.network(character.image ?? ""),
+            Image.network(character.image),
             SizedBox(height: 30),
 
             Container(

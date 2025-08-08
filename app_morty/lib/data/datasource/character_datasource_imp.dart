@@ -4,11 +4,12 @@ import 'package:dio/dio.dart';
 
 import '../../../../core/network/dio_client.dart';
 
+// translate-me-ignore-all-file
 class CharacterDatasourceImpl extends CharacterDatasource {
   final DioClient dioClient;
 
   CharacterDatasourceImpl(this.dioClient);
-
+@override
   Future<PaginatedCharacters> getCharacters({int page = 1}) async {
     try {
       final response = await dioClient.dio.get('/character?page=$page');

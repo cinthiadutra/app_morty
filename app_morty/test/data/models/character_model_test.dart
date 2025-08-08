@@ -1,22 +1,59 @@
-// import 'package:app_morty/data/models/character_model.dart';
-// import 'package:flutter_test/flutter_test.dart';
+import 'package:app_morty/data/models/character_model.dart';
+import 'package:app_morty/data/models/location.dart';
+import 'package:flutter_test/flutter_test.dart';
 
-// void main() {
-//   test('CharacterModel fromJson works correctly', () {
-//     final json = {
-//       "id": 1,
-//       "name": "Rick Sanchez",
-//       "status": "Alive",
-//       "species": "Human",
-//       "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-//     };
+void main() {
+  group('CharacterModel', () {
+    final map = {
+      "id": 1,
+      "name": "Rick Sanchez",
+      "status": "Alive",
+      "species": "Human",
+      "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+      "gender": "Male",
+      "location": {
+        "name": "Earth (C-137)",
+        "url": "https://rickandmortyapi.com/api/location/1"
+      }
+    };
 
-//     final character = CharacterModel.fromJson(json);
+    final character = CharacterModel(
+      id: 1,
+      name: "Rick Sanchez",
+      status: "Alive",
+      species: "Human",
+      image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+      gender: "Male",
+      location: Location(
+        name: "Earth (C-137)",
+        url: "https://rickandmortyapi.com/api/location/1",
+      ),
+    );
 
-//     expect(character.id, 1);
-//     expect(character.name, "Rick Sanchez");
-//     expect(character.status, "Alive");
-//     expect(character.species, "Human");
-//     expect(character.image, isA<String>());
-//   });
-// }
+    test('fromMap should return valid CharacterModel', () {
+      final result = CharacterModel.fromMap(map);
+      expect(result.name, character.name);
+      expect(result.location?.name, "Earth (C-137)");
+    });
+
+    test('toMap should return valid map', () {
+      final result = character.toMap();
+      expect(result['name'], "Rick Sanchez");
+      expect(result['location'], isA<Map>());
+      expect(result['location']?['name'], "Earth (C-137)");
+    });
+
+    test('fromJson and toJson should convert correctly', () {
+      final json = character.toJson();
+      final result = CharacterModel.fromJson(json);
+      expect(result.name, character.name);
+      expect(result.location?.url, character.location?.url);
+    });
+
+    test('toString returns expected string', () {
+      final string = character.toString();
+      expect(string, contains("Rick Sanchez"));
+      expect(string, contains("Earth (C-137)"));
+    });
+  });
+}

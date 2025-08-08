@@ -6,11 +6,9 @@ class AppColors {
   AppColors._();
   static const Color primary = Colors.black;
   static const Color secundary = Color(0xFF55b600);
-  static Color black = const Color(0xFF1e1e1e).withOpacity(.95);
   static Color grey = const Color(0xFF333333);
   static Color greyMedium = const Color(0xFF404040);
 
-  static Color greyOpacity = const Color(0xFF2c2c2c).withOpacity(.95);
   static Color greyLight = Colors.grey;
   static Color white = const Color(0xFFffffff);
   static Color red = const Color(0xFFff8181);
