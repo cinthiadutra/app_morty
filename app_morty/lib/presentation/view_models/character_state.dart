@@ -12,7 +12,7 @@ class CharacterLoaded extends CharacterState {
   final bool hasNextPage;
   final int currentPage;
 
-  CharacterLoaded({
+  CharacterLoaded(List<dynamic> filtered, {
     required this.characters,
     required this.hasNextPage,
     required this.currentPage,

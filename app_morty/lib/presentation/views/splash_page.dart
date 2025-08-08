@@ -1,5 +1,6 @@
-import 'package:app_morty/presentation/view_models/character_bloc.dart';
-import 'package:app_morty/presentation/views/character_list_page.dart';
+import 'package:app_morty/core/utils/app_colors.dart';
+import 'package:app_morty/data/routes/app_routes.dart';
+import 'package:app_morty/presentation/view_models/character_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,16 +16,9 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    // Aguarda 2 segundos e navega
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (_) => const CharacterListPage(),
-        ),
-      );
-
-      // Opcional: iniciar carregamento dos personagens
       context.read<CharacterCubit>().fetchCharacters(isFirstLoad: true);
+      Navigator.of(context).pushReplacementNamed(AppRoutes.characterList);
     });
   }
 
@@ -36,21 +30,10 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(
-              'https://images.justwatch.com/poster/308654947/s718/temporada-1.jpg', // coloque a imagem no pubspec.yaml
-              height: 120,
-            ),
-            const SizedBox(height: 24),
-            const Text(
-              'Rick & Morty',
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 12),
-            const CircularProgressIndicator(color: Colors.white),
+            SizedBox(height: 24),
+            Image.asset('assets/images.logo.png'),
+            SizedBox(height: 12),
+            CircularProgressIndicator(color: AppColors.secundary),
           ],
         ),
       ),

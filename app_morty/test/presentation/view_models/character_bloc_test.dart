@@ -1,7 +1,8 @@
 import 'package:app_morty/data/models/character_model.dart';
+import 'package:app_morty/data/models/location.dart';
 import 'package:app_morty/data/models/paginated_characters.dart';
 import 'package:app_morty/data/repositories/character_repository.dart_impl.dart';
-import 'package:app_morty/presentation/view_models/character_bloc.dart';
+import 'package:app_morty/presentation/view_models/character_cubit.dart';
 import 'package:app_morty/presentation/view_models/character_state.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,7 +26,9 @@ void main() {
       name: 'Rick',
       status: 'Alive',
       species: 'Human',
-      image: 'url',
+      image: 'url', gender: 'male', location: Location(
+        name: ''
+      ),
     ),
   ];
 

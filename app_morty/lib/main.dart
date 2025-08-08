@@ -1,13 +1,12 @@
-import 'package:app_morty/data/datasource/character_datasource.dart';
+// lib/main.dart
+import 'package:app_morty/data/routes/app_routes.dart';
+import 'package:app_morty/presentation/view_models/character_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:app_morty/core/network/dio_client.dart';
 import 'package:app_morty/data/datasource/character_datasource_imp.dart';
 import 'package:app_morty/data/repositories/character_repository.dart_impl.dart';
 import 'package:app_morty/domain/repository/character_repository.dart';
-import 'package:app_morty/presentation/view_models/character_bloc.dart';
-import 'package:app_morty/presentation/views/character_list_page.dart';
-import 'package:app_morty/presentation/views/splash_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'core/network/dio_client.dart';
 
 void main() {
   final dioClient = DioClient();
@@ -24,13 +23,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rick and Morty App',
-      theme: ThemeData(primarySwatch: Colors.green),
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (_) => CharacterCubit(repository),
-        child: SplashPage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CharacterCubit>(
+          create: (_) => CharacterCubit(repository),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Rick and Morty App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primarySwatch: Colors.green),
+        initialRoute: AppRoutes.splash,
+        routes: AppRoutes.routes,
       ),
     );
   }
